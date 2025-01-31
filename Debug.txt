@@ -2,11 +2,37 @@
 Describe how you recognized the bug. For example, you might list the contents of the list before and after a particular method call, and explain how that result revealed the problem.
 
 
-Bug 1: emptySet_tesetToString There was the wrong greater than operator when we should have been testing for equality
+Bug 1: emptySet_tesetToString was the first test that failed and where I started my hunt for bug 1.
+There was the wrong greater than operator when we should have been testing for equality. I first used
+control + shift + F to find where the test that was failing was in my SetTester.java file. This was 
+at line 111. I then put a break point there and steped into that test. I found myself at line 658 from 
+there. This is where my result was being assigned either true or false depending on the boolean result 
+of set.isEmpty(). This was thowing a false result so I stepped into the isEmpty() method. This brought 
+me to line 40 where the isEmpty method is defined. I set a breakpoint here because I wanted to do some 
+testing. I checked in the interface to see what the isEmpty() method is supposed to do. It is supposed 
+to determine if a set is empty but it was determining this by seeing if rear was greater than 0. To see
+if the set is empty you should assign your boolean value to true if rear is equal to zero. I changed this 
+in the code and then re-ran my debugger. Then after I stepped over the breakpoint where my test was failing
+and it passed I knew that I had solved the first bug. 
 
 
-Bug 2: 
+Bug 2: emptySet_addA_A_testIsEmpty was the first test that was failing after I fixed my first bug. I like
+bug 1 went to where that test was failing and set a breakpoint at line 147. From there I stepped into the 
+test. From there I was able to step through my code like I did in bug 1 until I found the add() method at line 
+60 in my ArraySet.java code. I added rear to the watch as well as element and set array, anything I thought would
+be useful. When I ran through my code using the step over method I found that the rear value was not being increased
+despite the fact that an element was being added to the array. So I added a bit of code to increment the 
+variable rear after the add method was being used. I put a breakpoint at my test and at the method 60 to see if 
+when ran my code it would increment. I saw that it incremented by using the watch and found that when running the 
+entirety of the code. All but 2 tests had been passed which I took as a good sign. 
 
 
-Bug 3: 
+Bug 3: The last bug that I found was an by running my tests and seeing that I had an index out of bounds error 
+that was being thrown on line 75. So I went to line 75 and investigated. I put a breakpoint on line 75 and ran the
+debugger. When it hit line 75 I put rear setArray[i] and setArray[i+1] in my watch so I could see their values 
+as I stepped over code. I realised that my code blew up when my setArray[i+1] was incremented to become 2 which made 
+sense because my rear value was only 2 at the time. I relised I need to have rear be offset by 1 because of how it starts 
+at 0 when counting the elements in a set. So I ran my debugger again. I hit line 75 setted over my dangerous code with my 
+new fix of having i < rear - 1 and passed all of my tests. Yipee! Since there was no more tests that failed I was concluded 
+with my debugging. 
 
