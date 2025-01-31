@@ -1,3 +1,7 @@
+# name the failed test where you are beginning your hunt, where you placed breakpoints, where and how the bug was found, and what you did to fix it.
+Describe how you recognized the bug. For example, you might list the contents of the list before and after a particular method call, and explain how that result revealed the problem.
+
+
 Bug 1: 
 
 
