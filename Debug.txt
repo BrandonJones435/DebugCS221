@@ -2,7 +2,7 @@
 Describe how you recognized the bug. For example, you might list the contents of the list before and after a particular method call, and explain how that result revealed the problem.
 
 
-Bug 1: 
+Bug 1: emptySet_tesetToString There was the wrong greater than operator when we should have been testing for equality
 
 
 Bug 2: 
